@@ -1,8 +1,3 @@
-import { useState } from "react";
-import PredictionForm from "./components/PredictionForm";
-import ResultDisplay from "./components/ResultDisplay";
-import Stats from "./components/Stats";
-
 function App() {
   const [result, setResult] = useState(null);
 
@@ -17,8 +12,8 @@ function App() {
       <ResultDisplay result={result} />
 
       <Stats />
+
+      <Footer />
     </div>
   );
 }
-
-export default App;
