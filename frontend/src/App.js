@@ -1,3 +1,9 @@
+import { useState } from "react";
+import PredictionForm from "./components/PredictionForm";
+import ResultDisplay from "./components/ResultDisplay";
+import Stats from "./components/Stats";
+import Footer from "./components/Footer";
+
 function App() {
   const [result, setResult] = useState(null);
 
@@ -17,3 +23,5 @@ function App() {
     </div>
   );
 }
+
+export default App;
