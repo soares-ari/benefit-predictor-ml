@@ -1,17 +1,24 @@
-import { useEffect } from "react";
-import api from "./services/api";
+import { useState } from "react";
+import PredictionForm from "./components/PredictionForm";
 
 function App() {
-  useEffect(() => {
-    api.get("health/")
-      .then((res) => console.log("✅ API conectada:", res.data))
-      .catch((err) => console.error("❌ Erro na conexão:", err.message));
-  }, []);
+  const [result, setResult] = useState(null);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-      <h1 className="text-5xl font-bold mb-4">Benefit Predictor</h1>
-      <p className="text-lg opacity-90">Conectando ao backend...</p>
+    <div className="min-h-screen bg-gradient-to-r from-blue-600 to-purple-600 flex flex-col items-center justify-center p-6">
+      <PredictionForm onResult={setResult} />
+
+      {result && (
+        <div className="mt-6 bg-white shadow-lg rounded-xl p-6 w-full max-w-lg text-center">
+          <h3 className="text-2xl font-bold text-gray-800 mb-2">
+            Satisfação: {result.satisfaction_score.toFixed(2)}%
+          </h3>
+          <p className="text-gray-600 italic">{result.recommendation}</p>
+          <span className="inline-block mt-3 px-4 py-1 text-sm font-semibold rounded-full bg-blue-100 text-blue-700">
+            Confiança: {result.confidence_level.toUpperCase()}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
