@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PredictionForm from "./components/PredictionForm";
+import ResultDisplay from "./components/ResultDisplay";
 import Stats from "./components/Stats";
 
 function App() {
@@ -7,19 +8,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-600 to-purple-600 flex flex-col items-center justify-start p-6">
+      <h1 className="text-white text-3xl font-bold mb-8 drop-shadow-lg">
+        Benefit Predictor
+      </h1>
+
       <PredictionForm onResult={setResult} />
 
-      {result && (
-        <div className="mt-6 bg-white shadow-lg rounded-xl p-6 w-full max-w-lg text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Satisfação: {result.satisfaction_score.toFixed(2)}%
-          </h3>
-          <p className="text-gray-600 italic">{result.recommendation}</p>
-          <span className="inline-block mt-3 px-4 py-1 text-sm font-semibold rounded-full bg-blue-100 text-blue-700">
-            Confiança: {result.confidence_level.toUpperCase()}
-          </span>
-        </div>
-      )}
+      <ResultDisplay result={result} />
 
       <Stats />
     </div>
