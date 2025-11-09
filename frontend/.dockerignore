@@ -1,0 +1,13 @@
+cd ..\frontend
+New-Item -Path ".dockerignore" -ItemType File
+```
+```
+node_modules
+npm-debug.log
+build
+.git
+.gitignore
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

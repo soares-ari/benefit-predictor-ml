@@ -1,0 +1,18 @@
+cd backend
+New-Item -Path ".dockerignore" -ItemType File
+```
+```
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.sqlite3
+*.log
+.git
+.gitignore
+.vscode
+.idea
+node_modules

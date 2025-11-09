@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,11 +85,11 @@ WSGI_APPLICATION = 'benefit_ai.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'benefit_db',
-        'USER': 'postgres',
-        'PASSWORD': '153280',  # ← A senha que você criou na instalação
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('DATABASE_NAME', 'benefit_db'),
+        'USER': os.environ.get('DATABASE_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),  # 'db' no Docker
+        'PORT': os.environ.get('DATABASE_PORT', '5432'),
     }
 }
 
